@@ -1,15 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { add, remove } from "../redux/Slices/CartSlice";
-
+import { toast } from "react-hot-toast";
 const Product = ({item}) => {
   const {cart} = useSelector((state) => state)
   const dispatch = useDispatch()
   function addHandler() {
     dispatch(add(item));
+    toast.success("Item Added to your Cart");
   }
 
   function removeHandler() {
     dispatch(remove(item.id));
+    toast.success("Item Removed from cart");
   }
 
   return (

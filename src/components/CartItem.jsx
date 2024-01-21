@@ -1,17 +1,19 @@
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { remove } from "../redux/Slices/CartSlice";
+import { toast } from "react-hot-toast"
 
 
 const CartItem = ({item, itemIndex, cartLength}) => {
-  console.log("index",itemIndex)
-  console.log("length",cartLength)
+  // console.log("index",itemIndex)
+  // console.log("length",cartLength)
 
 const {cart} = useSelector((state) => state);
 const dispatch = useDispatch();
 
 function removerHandler() {
   dispatch(remove(item.id));
+  toast.success("Item Removed from cart");
 }
 
   return (
@@ -19,7 +21,7 @@ function removerHandler() {
     <div className="w-full p-2 md:p-5  mb-2 md:mx-5  ml-6     ">
     <div className="flex flex-col md:flex-row items-center gap-5 mr-7 ">
     <div className=" w-[30%]  ">
-    <img src={item.image} className="object-cover" />
+    <img src={item.image} className="object-cover" alt=""/>
   </div>
   <div className="ml-10 self-start w-[100%] space-y-5 md:w-[70%]">
     <div>
